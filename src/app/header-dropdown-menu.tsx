@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useTheme } from "next-themes";
 import { AlignJustify } from 'lucide-react';
 
 import { Button } from "@/components/ui/button"
@@ -13,11 +14,14 @@ import {
 import ModeToggle from "./theme-toggle";
 
 export default function HeaderDropdownMenu() {
+    const { theme } = useTheme(); // 現在のテーマを取得
+    // テーマに基づくテキストカラークラス
+    const textColor = theme === "dark" ? "text-white" : "text-black";
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button className="bg-transparent text-white hover:bg-opacity-20 hover:bg-gray-200 rounded-full" size="icon">
+                <Button variant="ghost" size="icon">
                     <AlignJustify />
                 </Button>
             </DropdownMenuTrigger>
