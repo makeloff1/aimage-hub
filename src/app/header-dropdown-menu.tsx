@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-import { useTheme } from "next-themes";
 import { AlignJustify } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,10 +12,6 @@ import {
 import ModeToggle from "./theme-toggle";
 
 export default function HeaderDropdownMenu() {
-  const { theme } = useTheme(); // 現在のテーマを取得
-  // テーマに基づくテキストカラークラス
-  const textColor = theme === "dark" ? "text-white" : "text-black";
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -26,11 +20,11 @@ export default function HeaderDropdownMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem>AAA</DropdownMenuItem>
-        <DropdownMenuItem>BBB</DropdownMenuItem>
         <div className="relative flex items-center rounded-sm px-2 py-1.5 text-sm outline-none">
           <ModeToggle />
         </div>
+        {/* TODO: ログイン時にはログアウト、ログアウト時にはログインを表示 */}
+        <DropdownMenuItem>ログイン</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
