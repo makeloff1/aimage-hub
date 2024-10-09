@@ -1,0 +1,101 @@
+# databaseName
+mydatabase:
+  # collectionName
+  usres:
+    _id(default):
+      type: string
+      sample: xyzogefuga
+    loginType:
+      description: Google SSO or ローカルアカウント
+      type: enum
+      items:
+        - google
+        - local
+      sample: local
+    defaultLanguage:
+      description: ユーザのデフォルト言語
+      type: enum
+      items:
+        - jp
+        - en
+      sample: jp
+    loginId:
+      type: string
+      sample: hoge@example.com
+    name:
+      description: サイトでの表示名
+      type: string
+      sample: Makeloff
+    mail:
+      type: string
+      sample: hoge@example.com
+    password:
+      description: JWTで暗号化されたパスワード
+      type: secret-jwt
+      sample: xxxx
+    favorites:
+      description: お気に入り画像のid ( images の _id )
+      type: array
+      item:
+        type: string
+        sample: ["id1", "id2"]
+    history:
+      description: 画像履歴のid ( images の _id )
+      type: array
+      item:
+        type: string
+        sample: ["id1", "id2"]
+
+  # collectionName
+  images:
+    _id(default):
+      type: string
+      sample: xyzogehage
+    imageFilePath:
+      type: string
+      sample: /a/b/c/d/abcdXXXXYYYYZZZZ.png
+    title:
+      type: string
+      sample: hogehoge-hentai
+    creator:
+      type: string
+      sample: user1
+    tags:
+      type: array
+      item:
+        type: string
+        sample: ["hoge", "aa"]
+    totalViewCounts:
+      description: これまでの総閲覧数
+      type: number
+      sample: 1829
+    monthViewCounts:
+      description: 直近30日の総閲覧数
+      type: number
+      sample: 1829
+    weekViewCounts:
+      description: 直近7日の総閲覧数
+      type: number
+      sample: 1829
+    likeCounts:
+      type: number
+      sample: 1829
+    prompt:
+      type: string
+      sample: "hoge fuga higi"
+    price:
+      type: number
+      sample: 100
+    priceUnit:
+      type: enum
+        - yen
+        - dollar
+      sample: yen
+    comments:
+      type: array
+      item:
+        type: string
+        sample: ["xxx1", "yyyy1"]
+    uploadedAt:
+      type: timestamp
+      sample: 8318010
