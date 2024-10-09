@@ -1,6 +1,26 @@
-version: '3'
+version: "3"
 
 services:
+  nginx:
+    image: nginx:latest
+  web:
+    build:
+      context: .
+      args:
+        - APP_ENV=$APP_ENV
+      dockerfile: Dockerfile
+    image: web:latest
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    command: ["node", "server.js"]
+    restart: always
+    depends_on:
+      - mongodb
+    networks:
+      - internal
+
   mongodb:
     container_name: "mongodb"
     hostname: mongodb
@@ -14,4 +34,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - internal
 
+networks:
+  internal:
+    driver: bridge
