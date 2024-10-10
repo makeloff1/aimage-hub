@@ -28,17 +28,60 @@ mydatabase:
       sample: Makeloff
     mail:
       type: string
+      constraint: unique
       sample: hoge@example.com
     password:
-      description: JWTで暗号化されたパスワード
-      type: secret-jwt
+      description: bcryptで暗号化されたパスワード
+      type: secret-bcrypt
       sample: xxxx
+
+  # collectionName
+  imageMetrics:
+    _id(default):
+      type: string
+      sample: xyzogehage
+    imageId:
+      type: string
+      sample: hxxxxxa
+    totalViewCounts:
+      description: これまでの総閲覧数
+      type: number
+      sample: 1829
+    monthViewCounts:
+      description: 直近30日の総閲覧数
+      type: number
+      sample: 1829
+    weekViewCounts:
+      description: 直近7日の総閲覧数
+      type: number
+      sample: 1829
+    likeCounts:
+      type: number
+      sample: 1829
+
+  # collectionName
+  userFavorites:
+    _id(default):
+      type: string
+      sample: xyzogehage
+    userId:
+      type: string
+      sample: xyzogefuga
     favorites:
       description: お気に入り画像のid ( images の _id )
       type: array
       item:
         type: string
         sample: ["id1", "id2"]
+
+  # collectionName
+  userHistory:
+    _id(default):
+      type: string
+      sample: xyzogehage
+    userId:
+      type: string
+      sample: xyzogefuga
     history:
       description: 画像履歴のid ( images の _id )
       type: array
@@ -65,21 +108,6 @@ mydatabase:
       item:
         type: string
         sample: ["hoge", "aa"]
-    totalViewCounts:
-      description: これまでの総閲覧数
-      type: number
-      sample: 1829
-    monthViewCounts:
-      description: 直近30日の総閲覧数
-      type: number
-      sample: 1829
-    weekViewCounts:
-      description: 直近7日の総閲覧数
-      type: number
-      sample: 1829
-    likeCounts:
-      type: number
-      sample: 1829
     prompt:
       type: string
       sample: "hoge fuga higi"
@@ -99,3 +127,43 @@ mydatabase:
     uploadedAt:
       type: timestamp
       sample: 8318010
+
+  # collectionName
+  transactions:
+    _id(default):
+      type: string
+      sample: xyzogeYYYY
+    userId:
+      type: string
+      sample: fjpiewga
+    imageId:
+      type: string
+      sample: ghgwag
+    price:
+      type: number
+      sample: 1000
+    priceUnit:
+      type: enum
+      items:
+        - yen
+        - dollar
+      sample: yen
+    affiliatedId:
+      description: アフィリエイトID ( 紹介元、アフィリエイトID )
+      type: string
+      sample: ghgwag
+    paymentMethod:
+      description: 決済方法
+      type: string
+      sample: paypay
+    paymentStatus:
+      description: 決済状態
+      type: enum
+      items:
+        - pending
+        - completed
+      sample: completed
+    transactionDate:
+      description: トランザクション日（決算タイムスタンプ）
+      type: timestamp
+      sample: 1156815931
