@@ -36,30 +36,6 @@ mydatabase:
       sample: xxxx
 
   # collectionName
-  imageMetrics:
-    _id(default):
-      type: string
-      sample: xyzogehage
-    imageId:
-      type: string
-      sample: hxxxxxa
-    totalViewCounts:
-      description: これまでの総閲覧数
-      type: number
-      sample: 1829
-    monthViewCounts:
-      description: 直近30日の総閲覧数
-      type: number
-      sample: 1829
-    weekViewCounts:
-      description: 直近7日の総閲覧数
-      type: number
-      sample: 1829
-    likeCounts:
-      type: number
-      sample: 1829
-
-  # collectionName
   userFavorites:
     _id(default):
       type: string
@@ -127,6 +103,30 @@ mydatabase:
     uploadedAt:
       type: timestamp
       sample: 8318010
+
+  # collectionName
+  imageMetrics:
+    _id(default):
+      type: string
+      sample: xyzogehage
+    imageId:
+      type: string
+      sample: hxxxxxa
+    totalViewCounts:
+      description: これまでの総閲覧数
+      type: number
+      sample: 1829
+    monthViewCounts:
+      description: 直近30日の総閲覧数
+      type: number
+      sample: 1829
+    weekViewCounts:
+      description: 直近7日の総閲覧数
+      type: number
+      sample: 1829
+    likeCounts:
+      type: number
+      sample: 1829
 
   # collectionName
   transactions:

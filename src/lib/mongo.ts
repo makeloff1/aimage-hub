@@ -37,6 +37,9 @@ export const connectToMongoDb = async (): Promise<Db> => {
   const dbPromise = mongoClient.db(databaseName);
   console.log("Connected to database");
 
+  //
+  // バリデーション作成のためのロジック
+  //
   // TODO: 最終的にはバリデーションを入れて、変なデータを入れられないようにする
   const collectionName = "test2";
   const collections = await dbPromise
@@ -49,7 +52,9 @@ export const connectToMongoDb = async (): Promise<Db> => {
     console.log(`Collection ${collectionName} created with validation.`);
   }
 
+  //
   // インデックス作成のためのロジック
+  //
   const imagesCollection = dbPromise.collection("images");
   const existingIndexes = await imagesCollection.indexes();
 
