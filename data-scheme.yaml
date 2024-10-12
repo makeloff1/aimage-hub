@@ -22,7 +22,7 @@ mydatabase:
     loginId:
       type: string
       sample: hoge@example.com
-    name:
+    displayName:
       description: サイトでの表示名
       type: string
       sample: Makeloff
@@ -79,18 +79,23 @@ mydatabase:
     creator:
       type: string
       sample: user1
+    model:
+      description: model名
+      type: string
+      sample: "xxx"
     tags:
+      description: model と prompt 以外で検索したいキーワード
       type: array
       item:
         type: string
-        sample: ["hoge", "aa"]
+        sample: ["anime", "aaa"]
     prompt:
       type: string
       sample: "hoge fuga higi"
     price:
       type: number
       sample: 100
-    priceUnit:
+    currency:
       type: enum
         - yen
         - dollar
@@ -129,7 +134,7 @@ mydatabase:
       sample: 1829
 
   # collectionName
-  transactions:
+  imageTransactions:
     _id(default):
       type: string
       sample: xyzogeYYYY
@@ -142,7 +147,41 @@ mydatabase:
     price:
       type: number
       sample: 1000
-    priceUnit:
+    currency:
+      description: 通貨単位
+      type: enum
+      items:
+        - yen
+        - dollar
+      sample: yen
+    paymentMethod:
+      description: 決済方法
+      type: enum
+      items:
+        - paypay
+        - paypal
+      sample: paypay
+    paymentStatus:
+      description: 決済状態
+      type: enum
+      items:
+        - pending
+        - completed
+      sample: completed
+    transactionDate:
+      description: トランザクション日（決算タイムスタンプ）
+      type: timestamp
+      sample: 1156815931
+
+  afiliateTransactions:
+    _id(default):
+      type: string
+      sample: xyzogeYYYY
+    price:
+      type: number
+      sample: 1000
+    currency:
+      description: 通貨単位
       type: enum
       items:
         - yen
@@ -154,7 +193,10 @@ mydatabase:
       sample: ghgwag
     paymentMethod:
       description: 決済方法
-      type: string
+      type: enum
+      items:
+        - paypay
+        - paypal
       sample: paypay
     paymentStatus:
       description: 決済状態
