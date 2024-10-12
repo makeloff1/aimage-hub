@@ -3,14 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 
-export default function LoginForm() {
-  const [email, setEmail] = useState("");
+export default function SignIn() {
+  const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle login logic
-    console.log("Logging in with:", { email, password });
+    console.log("Logging in with:", { loginId, password });
   };
 
   return (
@@ -20,19 +20,19 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label
-              htmlFor="email"
+              htmlFor="loginId"
               className="block text-sm font-medium text-gray-700"
             >
-              メールアドレス
+              ログインID
             </label>
             <input
-              id="email"
-              name="email"
-              type="email"
+              id="loginId"
+              name="loginId"
+              type="loginId"
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={loginId}
+              onChange={(e) => setLoginId(e.target.value)}
             />
           </div>
 
