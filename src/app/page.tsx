@@ -1,9 +1,8 @@
-import { Header } from "./header";
+"use server";
 
-export default function Page() {
+export default async function Page() {
   return (
     <>
-      <Header />
       <div>main</div>
     </>
   );
